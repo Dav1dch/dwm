@@ -3,19 +3,21 @@
 /* appearance */
 static const unsigned int borderpx = 2; /* border pixel of windows */
 static const unsigned int snap = 32;    /* snap pixel */
-static const unsigned int gappih = 4;   /* horiz inner gap between windows */
-static const unsigned int gappiv = 4;   /* vert inner gap between windows */
+static const unsigned int gappih = 6;   /* horiz inner gap between windows */
+static const unsigned int gappiv = 6;   /* vert inner gap between windows */
 static const unsigned int gappoh =
-    4; /* horiz outer gap between windows and screen edge */
+    6; /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov =
-    4; /* vert outer gap between windows and screen edge */
+    6; /* vert outer gap between windows and screen edge */
 static const int smartgaps =
-    0;                              /* 1 means no outer gap when there is only one window */
+    0; /* 1 means no outer gap when there is only one window */
 static const int showbar = 1;       /* 0 means no bar */
-static const int topbar = 0;        /* 0 means bottom bar */
+static const int topbar = 1;        /* 0 means bottom bar */
 static const Bool viewontag = True; /* Switch view on tag switch */
-static const char *fonts[] = {"Consolas NF:size=12"};
-static const char dmenufont[] = "Consolas NF:size=10";
+// static const char *fonts[] = {"MonacoB2 Nerd Font Mono:size=12"};
+// static const char dmenufont[] = "MonacoB2 Nerd Font Mono:size=10";
+static const char *fonts[] = {"UbuntuMono Nerd Font Mono:size=14"};
+static const char dmenufont[] = "UbuntuMono Nerd Font Mono:size=12";
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
 static const char col_gray3[] = "#bbbbbb";
@@ -37,15 +39,16 @@ static const unsigned int alphas[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = {"一", "二", "三", "四", "五",
-                             "六", "七", "八", "九"};
+static const char *tags[] = {"🌐", "⌨", "📂", "🐬", "🎧", "🐧", "🐦", "🐨", "🐰"};
+//"", "", "", "", "", "", "", "", "🎧"};
 
 static const Rule rules[] = {
     /* xprop(1):
      *	WM_CLASS(STRING) = instance, class
      *	WM_NAME(STRING) = title
      */
-    /* class      instance    title       tags mask     isfloating   monitor */
+    /* class      instance    title       tags mask
+       isfloating   monitor */
     {"Gimp", NULL, NULL, 0, 1, -1},
     {"Firefox", NULL, NULL, 1 << 8, 0, -1},
 };
@@ -68,29 +71,31 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define MODKEY Mod1Mask
-#define TAGKEYS(KEY, TAG)                                          \
-    {MODKEY, KEY, view, {.ui = 1 << TAG}},                         \
-        {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}}, \
-        {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},          \
-        {MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},
+#define TAGKEYS(KEY, TAG)                                                      \
+  {MODKEY, KEY, view, {.ui = 1 << TAG}},                                       \
+      {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               \
+      {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},                        \
+      {MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd)                                           \
-    {                                                        \
-        .v = (const char *[]) { "/bin/sh", "-c", cmd, NULL } \
-    }
+#define SHCMD(cmd)                                                             \
+  {                                                                            \
+    .v = (const char *[]) { "/bin/sh", "-c", cmd, NULL }                       \
+  }
 
 /* commands */
 static char dmenumon[2] =
     "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {
-    "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1,
-    "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL};
+    "dmenu_run", "-m",      dmenumon, "-fn",    dmenufont, "-nb",     col_gray1,
+    "-nf",       col_gray3, "-sb",    col_cyan, "-sf",     col_gray4, NULL};
 static const char *trayercmd[] = {"/home/david/scripts/t-toggle.sh", NULL};
 static const char *upvol[] = {"/home/david/scripts/vol-up.sh", NULL};
 static const char *suspendcmd[] = {"/home/david/scripts/suspend.sh", NULL};
-static const char *incbacklightcmd[] = {"/home/david/scripts/inc-backlight.sh", NULL};
-static const char *decbacklightcmd[] = {"/home/david/scripts/dec-backlight.sh", NULL};
+static const char *incbacklightcmd[] = {"/home/david/scripts/inc-backlight.sh",
+                                        NULL};
+static const char *decbacklightcmd[] = {"/home/david/scripts/dec-backlight.sh",
+                                        NULL};
 static const char *downvol[] = {"/home/david/scripts/vol-down.sh", NULL};
 static const char *mutevol[] = {"/home/david/scripts/vol-toggle.sh", NULL};
 static const char *termcmd[] = {"st", NULL};
@@ -113,6 +118,8 @@ static Key keys[] = {
     {MODKEY, XK_b, togglebar, {0}},
     {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
+    {MODKEY, XK_e, hidewin, {0}},
+    {MODKEY | ShiftMask, XK_e, restorewin, {0}},
     {MODKEY, XK_i, incnmaster, {.i = +1}},
     {MODKEY, XK_d, incnmaster, {.i = -1}},
     {MODKEY, XK_h, setmfact, {.f = -0.05}},

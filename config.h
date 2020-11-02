@@ -14,10 +14,13 @@ static const int smartgaps =
 static const int showbar = 1;       /* 0 means no bar */
 static const int topbar = 1;        /* 0 means bottom bar */
 static const Bool viewontag = True; /* Switch view on tag switch */
-// static const char *fonts[] = {"MonacoB2 Nerd Font Mono:size=12"};
-// static const char dmenufont[] = "MonacoB2 Nerd Font Mono:size=10";
-static const char *fonts[] = {"UbuntuMono Nerd Font Mono:size=14"};
+//static const char *fonts[] = {"MonacoB2 Nerd Font Mono:size=10"};
+//static const char dmenufont[] = "MonacoB2 Nerd Font Mono:size=10";
+static const char *fonts[] = {"Noto Mono:size=10"};
 static const char dmenufont[] = "UbuntuMono Nerd Font Mono:size=12";
+//static const char *fonts[] = {"UbuntuMono:size=12", "JoyPixels:pixelsize=10:antialias=true:autohint=true"};
+//static const char *fonts[] = {"UbuntuMono Nerd Font Mono:size=12", "JoyPixels:pixelsize=11"};
+//static const char dmenufont[] = "Noto Mono:size=12";
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
 static const char col_gray3[] = "#bbbbbb";
@@ -39,7 +42,7 @@ static const unsigned int alphas[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = {"🌐", "⌨", "📂", "🐬", "🎧", "🐧", "🐦", "🐨", "🐰"};
+static const char *tags[] = {"\U0001F30F", "⚙", "\U0001F4C2", "🐬", "🎧", "🐧", "🐦", "🐨", "🐰"};
 //"", "", "", "", "", "", "", "", "🎧"};
 
 static const Rule rules[] = {

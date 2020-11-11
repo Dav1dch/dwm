@@ -3,14 +3,14 @@
 /* appearance */
 static const unsigned int borderpx = 2; /* border pixel of windows */
 static const unsigned int snap = 32;    /* snap pixel */
-static const unsigned int gappih = 6;   /* horiz inner gap between windows */
-static const unsigned int gappiv = 6;   /* vert inner gap between windows */
+static const unsigned int gappih = 4;   /* horiz inner gap between windows */
+static const unsigned int gappiv = 4;   /* vert inner gap between windows */
 static const unsigned int gappoh =
-    6; /* horiz outer gap between windows and screen edge */
+    4; /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov =
-    6; /* vert outer gap between windows and screen edge */
+    4; /* vert outer gap between windows and screen edge */
 static const int smartgaps =
-    0; /* 1 means no outer gap when there is only one window */
+    1; /* 1 means no outer gap when there is only one window */
 static const int showbar = 1;       /* 0 means no bar */
 static const int topbar = 1;        /* 0 means bottom bar */
 static const Bool viewontag = True; /* Switch view on tag switch */
@@ -22,7 +22,7 @@ static const char dmenufont[] =
 // static const char *fonts[] = {"UbuntuMono:size=12"};
 // "JoyPixels:pixelsize=10:antialias=true:autohint=true"}; static const char
 static const *fonts[] = {
-    "FiraCode Nerd Font Mono:size=12:antialias=true:autohint=true"};
+    "FiraCode Nerd Font Mono:size=11:antialias=true:autohint=true"};
 // "JoyPixels:pixelsize=11"}; static const char dmenufont[] = "Noto
 // Mono:size=12"; static const char col_cyan[] = "#37474f";
 static const char col_cyan[] = "#343434";
@@ -112,10 +112,13 @@ static const char *mutevol[] = {"/home/david/scripts/vol-toggle.sh", NULL};
 static const char *termcmd[] = {"st", NULL};
 static const char *chromecmd[] = {"firefox", NULL};
 static const char *screenshotcmd[] = {"deepin-screenshot", NULL};
+static const char *roficmd[] = {"/home/david/scripts/rofi.sh", NULL};
 
 static Key keys[] = {
     /* modifier                     key        function        argument */
     {MODKEY, XK_p, spawn, {.v = dmenucmd}},
+    {Mod1Mask, XK_space, spawn, {.v = roficmd}},
+    {MODKEY, XK_space, setlayout, {0}},
     {MODKEY, XK_period, spawn, {.v = emojipickercmd}},
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
     {MODKEY | ShiftMask, XK_t, spawn, {.v = trayercmd}},
@@ -127,7 +130,6 @@ static Key keys[] = {
     {MODKEY, XK_Left, spawn, {.v = decbacklightcmd}},
     {MODKEY, XK_Right, spawn, {.v = incbacklightcmd}},
     {0, XK_Print, spawn, {.v = screenshotcmd}},
-    //{0, XK_AudioLowerVolume, spawn, {.v = downvol}},
     {MODKEY, XK_b, togglebar, {0}},
     {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
@@ -144,7 +146,6 @@ static Key keys[] = {
     {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
     {MODKEY, XK_f, setlayout, {.v = &layouts[1]}},
     {MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
-    {MODKEY, XK_space, setlayout, {0}},
     {MODKEY | ShiftMask, XK_space, togglefloating, {0}},
     {MODKEY, XK_0, view, {.ui = ~0}},
     {MODKEY | ShiftMask, XK_0, tag, {.ui = ~0}},

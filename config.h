@@ -22,11 +22,14 @@ static const char dmenufont[] =
 // static const char *fonts[] = {"UbuntuMono:size=12"};
 // "JoyPixels:pixelsize=10:antialias=true:autohint=true"}; static const char
 static const *fonts[] = {
-    "FiraCode Nerd Font Mono:size=11:antialias=true:autohint=true"};
+    "FiraCode Nerd Font "
+    "Mono:size=11:antialias=true:autohint=true:style:medium"};
 // "JoyPixels:pixelsize=11"}; static const char dmenufont[] = "Noto
-// Mono:size=12"; static const char col_cyan[] = "#37474f";
-static const char col_cyan[] = "#343434";
-static const char col_gray1[] = "#222222";
+// Mono:size=12";
+static const char col_cyan[] = "#37474f";
+// static const char col_cyan[] = "#343434";
+// static const char col_gray1[] = "#222222";
+static const char col_gray1[] = "#232323";
 static const char col_gray2[] = "#444444";
 static const char col_gray3[] = "#dddddd";
 static const char col_gray4[] = "#ffffff";

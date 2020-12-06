@@ -12,7 +12,7 @@ static const unsigned int gappov =
 static const int smartgaps =
     1; /* 1 means no outer gap when there is only one window */
 static const int showbar = 1;       /* 0 means no bar */
-static const int topbar = 1;        /* 0 means bottom bar */
+static const int topbar = 0;        /* 0 means bottom bar */
 static const Bool viewontag = True; /* Switch view on tag switch */
 // static const char *fonts[] = {"MonacoB2 Nerd Font Mono:size=10"};
 // static const char dmenufont[] = "MonacoB2 Nerd Font Mono:size=10";
@@ -21,8 +21,8 @@ static const char dmenufont[] =
     "FiraCode Nerd Font Mono:size=12:antialias=true:autohint=true";
 // static const char *fonts[] = {"UbuntuMono:size=12"};
 // "JoyPixels:pixelsize=10:antialias=true:autohint=true"}; static const char
-static const *fonts[] = {"FiraCode Nerd Font Mono"
-                         ":size=12:antialias=true:autohint=true:style:medium"};
+static const *fonts[] = {"FuraCode Nerd Font Mono"
+                         ":size=12:antialias=true:autohint=true:style=Retina"};
 // "JoyPixels:pixelsize=11"}; static const char dmenufont[] = "Noto
 // Mono:size=12";
 static const char col_cyan[] = "#37474f";
@@ -118,7 +118,7 @@ static const char *decbacklightcmd[] = {"/home/david/scripts/dec-backlight.sh",
 static const char *downvol[] = {"/home/david/scripts/vol-down.sh", NULL};
 static const char *mutevol[] = {"/home/david/scripts/vol-toggle.sh", NULL};
 static const char *termcmd[] = {"st", NULL};
-static const char *chromecmd[] = {"firefox", NULL};
+static const char *chromecmd[] = {"google-chrome-stable", NULL};
 static const char *screenshotcmd[] = {"deepin-screenshot", NULL};
 static const char *roficmd[] = {"/home/david/scripts/rofi.sh", NULL};
 

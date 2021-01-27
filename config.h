@@ -1,30 +1,23 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx = 4; /* border pixel of windows */
+static const unsigned int borderpx = 1; /* border pixel of windows */
 static const unsigned int snap = 32;    /* snap pixel */
-static const unsigned int gappih = 6;   /* horiz inner gap between windows */
-static const unsigned int gappiv = 6;   /* vert inner gap between windows */
+static const unsigned int gappih = 2;   /* horiz inner gap between windows */
+static const unsigned int gappiv = 2;   /* vert inner gap between windows */
 static const unsigned int gappoh =
-    6; /* horiz outer gap between windows and screen edge */
+    2; /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov =
-    6; /* vert outer gap between windows and screen edge */
+    2; /* vert outer gap between windows and screen edge */
 static const int smartgaps =
     0; /* 1 means no outer gap when there is only one window */
 static const int showbar = 1;       /* 0 means no bar */
 static const int topbar = 0;        /* 0 means bottom bar */
 static const Bool viewontag = True; /* Switch view on tag switch */
-// static const char *fonts[] = {"MonacoB2 Nerd Font Mono:size=10"};
-// static const char dmenufont[] = "MonacoB2 Nerd Font Mono:size=10";
-// static const char *fonts[] = {"Noto Mono:size=10", "style:bold"};
 static const char dmenufont[] =
     "FiraCode Nerd Font Mono:size=12:antialias=true:autohint=true";
-// static const char *fonts[] = {"UbuntuMono:size=12"};
-// "JoyPixels:pixelsize=10:antialias=true:autohint=true"}; static const char
-static const *fonts[] = {"SauceCodePro Nerd Font Mono"
+static const *fonts[] = {"MonacoB Nerd Font Mono"
                          ":size=12:antialias=true:autohint=true"};
-// "JoyPixels:pixelsize=11"}; static const char dmenufont[] = "Noto
-// Mono:size=12";
 static const char col_cyan[] = "#37474f";
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
@@ -55,8 +48,9 @@ static const unsigned int alphas[][3] = {
 
 /* tagging */
 static const char *tags[] = {"一", "二", "三", "四", "五",
-	"六",      "七",      "八",      "九"};
-//static const char *tags[] = {"\uf7ae", "\uf120", "\uf121", "\uf684", "\uf04b",
+                             "六", "七", "八", "九"};
+// static const char *tags[] = {"\uf7ae", "\uf120", "\uf121", "\uf684",
+// "\uf04b",
 //                             "🐧",      "🐦",      "🐨",      "🐰"};
 //"", "", "", "", "", "", "", "", "🎧🐬"};
 
@@ -109,8 +103,7 @@ static const char *dmenucmd[] = {
     "dmenu_run", "-m",      dmenumon, "-fn",    dmenufont, "-nb",     col_gray1,
     "-nf",       col_gray3, "-sb",    col_cyan, "-sf",     col_gray4, NULL};
 static const char *trayercmd[] = {"/home/david/scripts/t-toggle.sh", NULL};
-static const char *emojipickercmd[] = {"/home/david/scripts/pick.sh",
-                                       NULL};
+static const char *emojipickercmd[] = {"/home/david/scripts/pick.sh", NULL};
 static const char *upvol[] = {"/home/david/scripts/vol-up.sh", NULL};
 static const char *suspendcmd[] = {"/home/david/scripts/suspend.sh", NULL};
 static const char *incbacklightcmd[] = {"/home/david/scripts/inc-backlight.sh",
@@ -121,7 +114,8 @@ static const char *downvol[] = {"/home/david/scripts/vol-down.sh", NULL};
 static const char *mutevol[] = {"/home/david/scripts/vol-toggle.sh", NULL};
 static const char *termcmd[] = {"st", NULL};
 static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
+static const char *scratchpadcmd[] = {"st", "-t",     scratchpadname,
+                                      "-g", "90x25", NULL};
 static const char *chromecmd[] = {"google-chrome-stable", NULL};
 static const char *screenshotcmd[] = {"deepin-screenshot", NULL};
 static const char *roficmd[] = {"/home/david/scripts/rofi.sh", NULL};
@@ -131,10 +125,10 @@ static Key keys[] = {
     {MODKEY, XK_p, spawn, {.v = dmenucmd}},
     {Mod1Mask, XK_space, spawn, {.v = roficmd}},
     {MODKEY, XK_space, setlayout, {0}},
-		{MODKEY, XK_period, spawn, {.v = emojipickercmd}},
-		{MODKEY, XK_Return, spawn, {.v = termcmd}},
-		{MODKEY, XK_grave,  togglescratch,  {.v = scratchpadcmd } },
-		{MODKEY | ShiftMask, XK_t, spawn, {.v = trayercmd}},
+    {MODKEY, XK_period, spawn, {.v = emojipickercmd}},
+    {MODKEY, XK_Return, spawn, {.v = termcmd}},
+    {MODKEY, XK_grave, togglescratch, {.v = scratchpadcmd}},
+    {MODKEY | ShiftMask, XK_t, spawn, {.v = trayercmd}},
     {MODKEY | ShiftMask, XK_a, spawn, {.v = screenshotcmd}},
     {MODKEY | ShiftMask, XK_c, spawn, {.v = chromecmd}},
     {MODKEY | ShiftMask, XK_s, spawn, {.v = suspendcmd}},

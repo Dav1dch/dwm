@@ -3,22 +3,22 @@
 /* appearance */
 static const unsigned int borderpx = 1; /* border pixel of windows */
 static const unsigned int snap = 32;    /* snap pixel */
-static const unsigned int gappih = 2;   /* horiz inner gap between windows */
-static const unsigned int gappiv = 2;   /* vert inner gap between windows */
+static const unsigned int gappih = 3;   /* horiz inner gap between windows */
+static const unsigned int gappiv = 3;   /* vert inner gap between windows */
 static const unsigned int gappoh =
-    2; /* horiz outer gap between windows and screen edge */
+    3; /* horiz outer gap between windows and screen edge */
 static const int user_bh = 25; /* 0 means that dwm will calculate bar height, >=
                                   1 means dwm will user_bh as bar height */
 static const unsigned int gappov =
-    2; /* vert outer gap between windows and screen edge */
+    3; /* vert outer gap between windows and screen edge */
 static const int smartgaps =
     1; /* 1 means no outer gap when there is only one window */
 static const int showbar = 1;       /* 0 means no bar */
-static const int topbar = 1;        /* 0 means bottom bar */
+static const int topbar = 0;        /* 0 means bottom bar */
 static const Bool viewontag = True; /* Switch view on tag switch */
 static const char dmenufont[] =
     "FiraCode Nerd Font Mono:size=12:antialias=true:autohint=true";
-static const *fonts[] = {"agave nerd font mono"
+static const *fonts[] = {"agave nerd font"
                          ":size=13:antialias=true:autohint=true"};
 // static const char col_cyan[] = "#37474f";
 static const char col_cyan[] = "#333333";
@@ -51,12 +51,14 @@ static const unsigned int alphas[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = {"", "", "", "", "",
-                             //	"六", "七", "八", "九"};
-                             "🐧", "🐦", "🐨", "🐰"};
+// static const char *tags[] = {"", "", "", "", "",
+//	"六", "七", "八", "九"};
+//"🐧", "🐦", "🐨", "🐰"};
 // static const char *tags[] = {"\uf7ae", "\uf120", "\uf121", "\uf684",
 // "\uf04b",
 //"", "", "", "", "", "", "", "", "🎧🐬"};
+static const char *tags[] = {"一", "二", "三", "四", "五",
+                             "六", "七", "八", "九"};
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -107,25 +109,32 @@ static char dmenumon[2] =
 static const char *dmenucmd[] = {
     "dmenu_run", "-m",      dmenumon, "-fn",    dmenufont, "-nb",     col_gray1,
     "-nf",       col_gray3, "-sb",    col_cyan, "-sf",     col_gray4, NULL};
-static const char *trayercmd[] = {"/home/david/scripts/t-toggle.sh", NULL};
-static const char *emojipickercmd[] = {"/home/david/scripts/pick.sh", NULL};
-static const char *dmenuemojipickercmd[] = {"/home/david/scripts/pickEmoji.sh",
-                                            NULL};
-static const char *upvol[] = {"/home/david/scripts/vol-up.sh", NULL};
-static const char *suspendcmd[] = {"/home/david/scripts/suspend.sh", NULL};
-static const char *incbacklightcmd[] = {"/home/david/scripts/inc-backlight.sh",
-                                        NULL};
-static const char *decbacklightcmd[] = {"/home/david/scripts/dec-backlight.sh",
-                                        NULL};
-static const char *downvol[] = {"/home/david/scripts/vol-down.sh", NULL};
-static const char *mutevol[] = {"/home/david/scripts/vol-toggle.sh", NULL};
+static const char *trayercmd[] = {"/home/cappuccino/scripts/t-toggle.sh", NULL};
+static const char *emojipickercmd[] = {"/home/cappuccino/scripts/pick.sh",
+                                       NULL};
+static const char *dmenuemojipickercmd[] = {
+    "/home/cappuccino/scripts/pickEmoji.sh", NULL};
+static const char *upvol[] = {"/home/cappuccino/scripts/vol-up.sh", NULL};
+static const char *suspendcmd[] = {"/home/cappuccino/scripts/suspend.sh", NULL};
+static const char *incbacklightcmd[] = {
+    "/home/cappuccino/scripts/inc-backlight.sh", NULL};
+static const char *decbacklightcmd[] = {
+    "/home/cappuccino/scripts/dec-backlight.sh", NULL};
+static const char *downvol[] = {"/home/cappuccino/scripts/vol-down.sh", NULL};
+static const char *mutevol[] = {"/home/cappuccino/scripts/vol-toggle.sh", NULL};
 static const char *termcmd[] = {"st", NULL};
 static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = {"st", "-t",     scratchpadname,
-                                      "-g", "180x25", NULL};
+static const char *scratchpadcmd[] = {"st", "-t",    scratchpadname,
+                                      "-g", "80x25", NULL};
 static const char *chromecmd[] = {"google-chrome-stable", NULL};
-static const char *screenshotcmd[] = {"deepin-screenshot", NULL};
-static const char *roficmd[] = {"/home/david/scripts/rofi.sh", NULL};
+static const char *edgecmd[] = {"microsoft-edge-dev", NULL};
+static const char *firefoxcmd[] = {"firefox-nightly", NULL};
+static const char *screenshotcmd[] = {"/home/cappuccino/scripts/flameshot.sh",
+                                      NULL};
+static const char *roficmd[] = {
+    "/home/cappuccino/.config/rofi/bin/launcher_ribbon", NULL};
+static const char *powercmd[] = {"/home/cappuccino/.config/rofi/bin/powermenu",
+                                 NULL};
 
 static Key keys[] = {
     /* modifier                     key        function        argument */
@@ -137,8 +146,10 @@ static Key keys[] = {
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_grave, togglescratch, {.v = scratchpadcmd}},
     {MODKEY | ShiftMask, XK_t, spawn, {.v = trayercmd}},
+    {MODKEY | ShiftMask, XK_p, spawn, {.v = powercmd}},
     {MODKEY | ShiftMask, XK_a, spawn, {.v = screenshotcmd}},
-    {MODKEY | ShiftMask, XK_c, spawn, {.v = chromecmd}},
+    {MODKEY | ShiftMask, XK_c, spawn, {.v = edgecmd}},
+    {MODKEY | ShiftMask, XK_x, spawn, {.v = firefoxcmd}},
     {MODKEY | ShiftMask, XK_s, spawn, {.v = suspendcmd}},
     {MODKEY, XK_Down, spawn, {.v = downvol}},
     {MODKEY, XK_Up, spawn, {.v = upvol}},

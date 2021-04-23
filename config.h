@@ -18,17 +18,34 @@ static const int topbar = 0;        /* 0 means bottom bar */
 static const Bool viewontag = True; /* Switch view on tag switch */
 static const char dmenufont[] =
     "FiraCode Nerd Font Mono:size=12:antialias=true:autohint=true";
-static const *fonts[] = {"agave nerd font"
-                         ":size=13:antialias=true:autohint=true"};
+static const *fonts[] = {"fantasqueSansMono Nerd Font"
+                         ":size=14:antialias=true:autohint=true"};
 // static const char col_cyan[] = "#37474f";
-static const char col_cyan[] = "#333333";
+// static const char col_cyan[] = "#333333";
+// static const char col_gray1[] = "#222222";
+// static const char col_gray2[] = "#444444";
+// static const char col_gray3[] = "#dddddd";
+// static const char col_gray4[] = "#ffffff";
+// static const char col_border[] = "#42A5F5";
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
-static const char col_gray3[] = "#dddddd";
+static const char col_gray3[] = "#bbbbbb";
 static const char col_gray4[] = "#ffffff";
+static const char col_cyan[] = "#37474F";
 static const char col_border[] = "#42A5F5";
 static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
+static const char *colors[][3] = {
+    /*               fg         bg         border   */
+    [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
+    [SchemeSel] = {col_gray4, col_cyan, col_border},
+    [SchemeHid] = {col_cyan, col_gray1, col_border},
+};
+static const unsigned int alphas[][3] = {
+    /*               fg      bg        border     */
+    [SchemeNorm] = {OPAQUE, baralpha, borderalpha},
+    [SchemeSel] = {OPAQUE, baralpha, borderalpha},
+};
 // static const char *colors[][3] = {
 //     /*               fg         bg         border   */
 //     [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
@@ -36,19 +53,19 @@ static const unsigned int borderalpha = OPAQUE;
 //     [SchemeHid] = {col_cyan, col_gray1, col_cyan},
 //     //[SchemeHid] = {col_cyan, col_gray1, col_border},
 // };
-static const char *colors[][3] = {
-    /*               fg         bg         border   */
-    [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
-    [SchemeSel] = {col_gray4, col_cyan, col_border},
-    [SchemeHid] = {col_cyan, col_gray1, col_cyan},
-    // [SchemeHid] = {col_cyan, col_gray1, col_cyan},
-    //[SchemeHid] = {col_cyan, col_gray1, col_border},
-};
-static const unsigned int alphas[][3] = {
-    /*               fg      bg        border     */
-    [SchemeNorm] = {OPAQUE, baralpha, borderalpha},
-    [SchemeSel] = {OPAQUE, baralpha, borderalpha},
-};
+// static const char *colors[][3] = {
+//[>               fg         bg         border   <]
+//[SchemeNorm] = {col_gray3, col_gray1, col_gray2},
+//[SchemeSel] = {col_gray4, col_cyan, col_border},
+//[SchemeHid] = {col_cyan, col_gray1, col_cyan},
+//// [SchemeHid] = {col_cyan, col_gray1, col_cyan},
+////[SchemeHid] = {col_cyan, col_gray1, col_border},
+//};
+// static const unsigned int alphas[][3] = {
+//[>               fg      bg        border     <]
+//[SchemeNorm] = {OPAQUE, baralpha, borderalpha},
+//[SchemeSel] = {OPAQUE, baralpha, borderalpha},
+//};
 
 /* tagging */
 // static const char *tags[] = {"", "", "", "", "",

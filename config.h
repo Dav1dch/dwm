@@ -22,7 +22,7 @@ static const unsigned int gappov =
 static const int smartgaps =
     1; /* 1 means no outer gap when there is only one window */
 static const int showbar = 1;       /* 0 means no bar */
-static const int topbar = 0;        /* 0 means bottom bar */
+static const int topbar = 1;        /* 0 means bottom bar */
 static const Bool viewontag = True; /* Switch view on tag switch */
 static const char *dmenufont[] = {
     "DroidSansMono Nerd Font Mono:size=12:antialias=true:autohint=true",
@@ -151,13 +151,13 @@ static const char *decbacklightcmd[] = {
     "/home/cappuccino/scripts/dec-backlight.sh", NULL};
 static const char *downvol[] = {"/home/cappuccino/scripts/vol-down.sh", NULL};
 static const char *mutevol[] = {"/home/cappuccino/scripts/vol-toggle.sh", NULL};
-static const char *termcmd[] = {"st", NULL};
+static const char *termcmd[] = {"alacritty", NULL};
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = {"st", "-t",     scratchpadname,
                                       "-g", "100x30", NULL};
 static const char *chromecmd[] = {"google-chrome-stable", NULL};
 static const char *edgecmd[] = {"microsoft-edge-dev", NULL};
-static const char *firefoxcmd[] = {"firefox-nightly", NULL};
+static const char *firefoxcmd[] = {"firefox", NULL};
 static const char *screenshotcmd[] = {"/home/cappuccino/scripts/flameshot.sh",
                                       NULL};
 static const char *roficmd[] = {
@@ -177,7 +177,7 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_t, spawn, {.v = trayercmd}},
     {MODKEY | ShiftMask, XK_p, spawn, {.v = powercmd}},
     {MODKEY | ShiftMask, XK_a, spawn, {.v = screenshotcmd}},
-    {MODKEY | ShiftMask, XK_c, spawn, {.v = edgecmd}},
+    {MODKEY | ShiftMask, XK_c, spawn, {.v = chromecmd}},
     {MODKEY | ShiftMask, XK_x, spawn, {.v = firefoxcmd}},
     {MODKEY | ShiftMask, XK_s, spawn, {.v = suspendcmd}},
     {MODKEY, XK_Down, spawn, {.v = downvol}},
